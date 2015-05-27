@@ -176,7 +176,7 @@ def load_digit_dict(filename):
     # print digit_dict
     print 'Load Digit Dict Complete.'
 
-load_digit_dict('../data/digit_dict')
+
 def digit_norm(s, other_str):
     '''
     s need to be unicode.
@@ -218,7 +218,7 @@ def gen_digit_dict(output='../data/digit_dict', total=3000):
 
     with open(output, 'w') as f:
         for character, digit in digit_list:
-            print character, digit
+            # print character, digit
             f.write(character + ',' + str(digit) + '\n')
 
 qc_dict = {}

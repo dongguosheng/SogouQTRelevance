@@ -48,7 +48,7 @@ def gen_word2vec_model(input_file, with_label=True):
     texts = get_texts(input_file, with_label=with_label)
     model = models.Word2Vec(texts, size=50, window=5, min_count=5, workers=4)
     print 'Begin to train Word2Vec ...'
-    model.save('./model/word2vec.model')
+    model.save('../model/word2vec.model')
     print 'Word2Vec train Complete.'
 
 def gen_topic_model(input_file, with_label=False):
@@ -388,21 +388,22 @@ def main():
     now = datetime.now()
     data_dir = '../data/'
     model_dir = '../model/'
+
+    gen_digit_dict()
+    load_digit_dict('../data/digit_dict')
+     
     load_stopwords(data_dir + 'stopwords.txt')
 
-    # gen_df(data_dir + 'data.txt', data_dir + 'df_file')
-    # gen_df(data_dir + 'data.txt', data_dir + 'df_file_del_sub', del_subtitle=True)
+    gen_df(data_dir + 'data.txt', data_dir + 'df_file')
+    gen_df(data_dir + 'data.txt', data_dir + 'df_file_del_sub', del_subtitle=True)
     
-    # gen_topic_model(data_dir + 'data_for_tm.txt', with_label=True)
-    # gen_word2vec_model(data_dir + 'data_for_tm.txt', with_label=True)
+    gen_topic_model(data_dir + 'data_for_tm.txt', with_label=True)
+    gen_word2vec_model(data_dir + 'data_for_tm.txt', with_label=True)
 
     print 'DF and models Complete. Cost: ' + str(datetime.now() - now)
     now = datetime.now()
 
-    # train_set = 'train.txt'
-    # test_set = 'test.txt'
-
-    is_off = True
+    is_off = False
     tail = '_off' if is_off else ''
     train_set = 'train' + tail + '.txt'
     test_set = 'test' + tail + '.txt'
