@@ -1,3 +1,2 @@
 # SogouQTRelevance
-sogou-ndbc query-title relevance
-
+sogou-ndbc query-title relevance, 2nd
